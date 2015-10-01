@@ -5,8 +5,8 @@ PHP CLI Syntax Highlighter
 [![Coverage Status](https://img.shields.io/codecov/c/github/php-school/psx.svg?style=flat-square)](https://codecov.io/github/php-school/psx)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/php-school/psx.svg?style=flat-square)](https://scrutinizer-ci.com/g/php-school/psx/)
 
-This is a tool to syntax highlight PHP code for display on a terminal. It takes in an AST produced by https://github.com/nikic/PHP-Parser
-and prints the code. It only decorates a subset of the language. It is literally a copy-paste of https://github.com/nikic/PHP-Parser/blob/39a039fa4257d3b9209de36cc54f5d3f5d6253f5/lib/PhpParser/PrettyPrinter/Standard.php 
+This is a tool to syntax highlight PHP code for display on a terminal. It takes in an AST produced by [nikic/php-parser](https://github.com/nikic/PHP-Parser)
+and prints the code. It only decorates a subset of the language. It is literally a copy-paste of [PrettyPrinter/Standard](https://github.com/nikic/PHP-Parser/blob/39a039fa4257d3b9209de36cc54f5d3f5d6253f5/lib/PhpParser/PrettyPrinter/Standard.php) 
 with some decorating added around the printing.
 
 ## Usage
@@ -24,7 +24,7 @@ $prettyPrinter = new \PhpSchool\PSX\SyntaxHighlighter(
 echo $prettyPrinter->prettyPrint($stmts);
 ```
 
-The colouring by default uses https://github.com/kevinlebrun/colors.php. You can use any library you want
+The colouring by default uses [kevinlebrun/colors.php](https://github.com/kevinlebrun/colors.php). You can use any library you want
 by building an adapter class which implements `\PhpSchool\PSX\ColourAdapterInterface`, you will need to map the colours in `\PhpSchool\PSX\Colours` to your library.
 
 ## Customising Colours
