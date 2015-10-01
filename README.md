@@ -90,6 +90,7 @@ Every keyword inside each type will be coloured by that colour.
 #### TYPE_VAR_DEREF
 
  * `->`
+
 #### TYPE_CALL_PARENTHESIS
 
  * `(`
