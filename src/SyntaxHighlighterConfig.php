@@ -16,7 +16,7 @@ class SyntaxHighlighterConfig
     const TYPE_RETURN           = 'return';
     const TYPE_VAR_DEREF        = 'var_deref';
     const TYPE_CALL_PARENTHESIS = 'call_parenthesis';
-    CONST TYPE_LHS              = 'lhs';
+    const TYPE_LHS              = 'lhs';
 
     /**
      * @var array

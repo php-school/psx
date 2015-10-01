@@ -39,8 +39,8 @@ class SyntaxHighlighter extends Standard
     public function __construct(
         SyntaxHighlighterConfig $config,
         ColourAdapterInterface $colourAdapter,
-        array $options = [])
-    {
+        array $options = []
+    ) {
         $this->colourAdapter = $colourAdapter;
         parent::__construct($options);
         $this->config = $config;
