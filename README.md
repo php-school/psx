@@ -53,45 +53,45 @@ Every keyword inside each type will be coloured by that colour.
 
 #### TYPE_KEYWORD
 
- * if
- * elseif
- * else
- * for
- * foreach
- * while
- * do
- * switch
- * finally
- * try
- * catch
- * break
- * continue
- * throw
- * goto
- * function
+ * `if`
+ * `elseif`
+ * `else`
+ * `for`
+ * `foreach`
+ * `while`
+ * `do`
+ * `switch`
+ * `finally`
+ * `try`
+ * `catch`
+ * `break`
+ * `continue`
+ * `throw`
+ * `goto`
+ * `function`
 
 #### TYPE_BRACE
  
- * {
- * }
+ * `{`
+ * `}`
  
 #### TYPE_STRING
 
- * 'some-string'
+ * `'some-string'`
  
 #### TYPE_CONSTRUCT
 
- * echo
+ * `echo`
  
 #### TYPE_RETURN
 
- * return
+ * `return`
  
 #### TYPE_VAR_DEREF
 
- * ->
+ * `->`
 #### TYPE_CALL_PARENTHESIS
 
- * (
- * )
+ * `(`
+ * `)`
  
