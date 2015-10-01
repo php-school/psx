@@ -37,15 +37,18 @@ class SyntaxHighlighterTest extends \PHPUnit_Framework_TestCase
      * @dataProvider provideTestPrettyPrintFile
      * @covers \PhpSchool\PSX\SyntaxHighlighter<extended>
      */
-    public function testPrettyPrintFile($name, $code, $expected, $mode) {
+    public function testPrettyPrintFile($name, $code, $expected, $mode)
+    {
         $this->doTestPrettyPrintMethod('prettyPrintFile', $name, $code, $expected, $mode);
     }
 
-    public function provideTestPrettyPrintFile() {
+    public function provideTestPrettyPrintFile()
+    {
         return $this->getTests(__DIR__ . '/code', 'file-test');
     }
 
-    public function testPrettyPrintExpr() {
+    public function testPrettyPrintExpr()
+    {
         $prettyPrinter = $this->getPrinter();
         $expr = new Expr\BinaryOp\Mul(
             new Expr\BinaryOp\Plus(new Expr\Variable('a'), new Expr\Variable('b')),
@@ -59,7 +62,8 @@ class SyntaxHighlighterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("function () {\n    return 'a\nb';\n}", $prettyPrinter->prettyPrintExpr($expr));
     }
 
-    protected function doTestPrettyPrintMethod($method, $name, $code, $expected, $modeLine) {
+    protected function doTestPrettyPrintMethod($method, $name, $code, $expected, $modeLine)
+    {
         $lexer = new Lexer\Emulative;
         $parser5 = new Parser\Php5($lexer);
         $parser7 = new Parser\Php7($lexer);
@@ -84,7 +88,7 @@ class SyntaxHighlighterTest extends \PHPUnit_Framework_TestCase
         if ('php5' === $version) {
             $this->assertSame($expected, $output5, $name);
             $this->assertNotSame($expected, $output7, $name);
-        } else if ('php7' === $version) {
+        } elseif ('php7' === $version) {
             $this->assertSame($expected, $output7, $name);
             $this->assertNotSame($expected, $output5, $name);
         } else {
@@ -93,7 +97,8 @@ class SyntaxHighlighterTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    protected function getTests($directory, $fileExtension) {
+    protected function getTests($directory, $fileExtension)
+    {
         $it = new \RecursiveDirectoryIterator($directory);
         $it = new \RecursiveIteratorIterator($it, \RecursiveIteratorIterator::LEAVES_ONLY);
         $it = new \RegexIterator($it, '(\.' . preg_quote($fileExtension) . '$)');
@@ -106,7 +111,7 @@ class SyntaxHighlighterTest extends \PHPUnit_Framework_TestCase
             // evaluate @@{expr}@@ expressions
             $fileContents = preg_replace_callback(
                 '/@@\{(.*?)\}@@/',
-                function($matches) {
+                function ($matches) {
                     return eval('return ' . $matches[1] . ';');
                 },
                 $fileContents
@@ -131,7 +136,8 @@ class SyntaxHighlighterTest extends \PHPUnit_Framework_TestCase
         return $tests;
     }
 
-    private function extractMode($expected) {
+    private function extractMode($expected)
+    {
         $firstNewLine = strpos($expected, "\n");
         if (false === $firstNewLine) {
             $firstNewLine = strlen($expected);
@@ -145,14 +151,17 @@ class SyntaxHighlighterTest extends \PHPUnit_Framework_TestCase
         $expected = (string) substr($expected, $firstNewLine + 1);
         return [$expected, substr($firstLine, 2)];
     }
-    private function parseModeLine($modeLine) {
+
+    private function parseModeLine($modeLine)
+    {
         $parts = explode(' ', $modeLine, 2);
         $version = isset($parts[0]) ? $parts[0] : 'both';
         $options = isset($parts[1]) ? json_decode($parts[1], true) : [];
         return [$version, $options];
     }
 
-    protected function canonicalize($str) {
+    protected function canonicalize($str)
+    {
         // trim from both sides
         $str = trim($str);
 
