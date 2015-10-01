@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4ad869465f68588827029f3b9727ae55",
-    "content-hash": "67de6600ad224d492c677751e608e28e",
+    "hash": "1d214f1468885cb296b08a96793da2a2",
+    "content-hash": "a41050cde3437414b69333906c511b51",
     "packages": [
         {
             "name": "kevinlebrun/colors.php",
@@ -1137,7 +1137,14 @@
             "time": "2015-09-14 14:14:09"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "2.0.0-alpha1",
+            "alias_normalized": "2.0.0.0-alpha1",
+            "version": "9999999-dev",
+            "package": "nikic/php-parser"
+        }
+    ],
     "minimum-stability": "stable",
     "stability-flags": {
         "nikic/php-parser": 20

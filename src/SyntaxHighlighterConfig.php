@@ -55,7 +55,7 @@ class SyntaxHighlighterConfig
             $types  = array_keys($colors);
             $diff   = array_diff($types, $this->types);
             if (count($diff)) {
-                throw new \InvalidArgumentException('Types: "%s" are not supported', implode('", "', $diff));
+                throw new \InvalidArgumentException(sprintf('Types: "%s" are not supported', implode('", "', $diff)));
             }
 
             $this->colors = array_merge($this->colors, $colors);
