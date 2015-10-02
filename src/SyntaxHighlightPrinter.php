@@ -127,7 +127,7 @@ class SyntaxHighlightPrinter extends Standard
     {
         return sprintf(
             '%s%s;',
-            $this->color('return', SyntaxHighlighterConfig::TYPE_RETURN),
+            $this->color('return', SyntaxHighlighterConfig::TYPE_RETURN_NEW),
             (null !== $node->expr ? ' ' . $this->p($node->expr) : '')
         );
     }
@@ -448,6 +448,27 @@ class SyntaxHighlightPrinter extends Standard
             $this->pDereferenceLhs($node->var),
             $this->color('->', SyntaxHighlighterConfig::TYPE_VAR_DEREF),
             $this->pObjectProperty($node->name),
+            $this->color('(', SyntaxHighlighterConfig::TYPE_CALL_PARENTHESIS),
+            $this->pCommaSeparated($node->args),
+            $this->color(')', SyntaxHighlighterConfig::TYPE_CALL_PARENTHESIS)
+        );
+    }
+
+    /**
+     * @param Expr\New_ $node
+     *
+     * @return string
+     */
+    public function pExpr_New(Expr\New_ $node)
+    {
+        if ($node->class instanceof Stmt\Class_) {
+            $args = $node->args ? '(' . $this->pCommaSeparated($node->args) . ')' : '';
+            return 'new ' . $this->pClassCommon($node->class, $args);
+        }
+        return sprintf(
+            '%s %s%s%s%s',
+            $this->color('new', SyntaxHighlighterConfig::TYPE_RETURN_NEW),
+            $this->color($this->p($node->class), SyntaxHighlighterConfig::TYPE_CLASS),
             $this->color('(', SyntaxHighlighterConfig::TYPE_CALL_PARENTHESIS),
             $this->pCommaSeparated($node->args),
             $this->color(')', SyntaxHighlighterConfig::TYPE_CALL_PARENTHESIS)

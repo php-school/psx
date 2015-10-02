@@ -13,10 +13,11 @@ class SyntaxHighlighterConfig
     const TYPE_BRACE            = 'brace';
     const TYPE_STRING           = 'string';
     const TYPE_CONSTRUCT        = 'construct';
-    const TYPE_RETURN           = 'return';
+    const TYPE_RETURN_NEW       = 'return_new';
     const TYPE_VAR_DEREF        = 'var_deref';
     const TYPE_CALL_PARENTHESIS = 'call_parenthesis';
     const TYPE_LHS              = 'lhs';
+    const TYPE_CLASS            = 'class';
 
     /**
      * @var array
@@ -26,10 +27,11 @@ class SyntaxHighlighterConfig
         self::TYPE_BRACE,
         self::TYPE_STRING,
         self::TYPE_CONSTRUCT,
-        self::TYPE_RETURN ,
+        self::TYPE_RETURN_NEW ,
         self::TYPE_VAR_DEREF,
         self::TYPE_CALL_PARENTHESIS,
-        self::TYPE_LHS
+        self::TYPE_LHS,
+        self::TYPE_CLASS,
     ];
 
     /**
@@ -40,10 +42,11 @@ class SyntaxHighlighterConfig
         self::TYPE_BRACE            => Colours::YELLOW,
         self::TYPE_STRING           => Colours::GREEN,
         self::TYPE_CONSTRUCT        => Colours::YELLOW,
-        self::TYPE_RETURN           => Colours::RED,
+        self::TYPE_RETURN_NEW       => Colours::LIGHT_MAGENTA,
         self::TYPE_VAR_DEREF        => Colours::GREEN,
         self::TYPE_CALL_PARENTHESIS => Colours::LIGHT_GRAY,
         self::TYPE_LHS              => Colours::YELLOW,
+        self::TYPE_CLASS            => Colours::LIGHT_GRAY,
     ];
 
     /**
