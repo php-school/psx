@@ -12,16 +12,12 @@ with some decorating added around the printing.
 ## Usage
 
 ```php
-use PhpSchool\PSX\ColorsAdapter;
-use PhpSchool\PSX\SyntaxHighlighterConfig;
-use Colors\Color;
+use PhpSchool\PSX\Factory;
 
-$prettyPrinter = new \PhpSchool\PSX\SyntaxHighlighter(
-    new SyntaxHighlighterConfig,
-    new ColorsAdapter(new Color)
-);
+$highlighterFactory = new Factory;
+$highlighter = $highlighterFactory->__invoke();
 
-echo $prettyPrinter->prettyPrint($stmts);
+echo $highlighter->highlight($phpCode);
 ```
 
 The colouring by default uses [kevinlebrun/colors.php](https://github.com/kevinlebrun/colors.php). You can use any library you want
@@ -30,21 +26,29 @@ by building an adapter class which implements `\PhpSchool\PSX\ColourAdapterInter
 ## Customising Colours
 
 ```php
-use PhpSchool\PSX\ColorsAdapter;
-use PhpSchool\PSX\SyntaxHighlighterConfig;
+use PhpParser\ParserFactory;
 use Colors\Color;
-use PhpSchool\PSX\Colours;
+use PhpSchool\PSX\SyntaxHighlighter;
+use PhpSchool\PSX\SyntaxHighlightPrinter;
+use PhpSchool\PSX\SyntaxHighlighterConfig;
+use PhpSchool\PSX\ColorsAdapter;
 
-$prettyPrinter = new \PhpSchool\PSX\SyntaxHighlighter(
-    new SyntaxHighlighterConfig([
-        SyntaxHighlighterConfig::TYPE_KEYWORD   => Colours::GREEN,
-        SyntaxHighlighterConfig::TYPE_RETURN    => Colours::BLACK,
-    ]),
-    new ColorsAdapter(new Color)
+$parserFactory  = new ParserFactory;
+$color          = new Color;
+$color->setForceStyle(true);
+$highlighter = new SyntaxHighlighter(
+    $parserFactory->create(ParserFactory::PREFER_PHP7),
+    new SyntaxHighlightPrinter(
+        new SyntaxHighlighterConfig([
+            SyntaxHighlighterConfig::TYPE_KEYWORD       => Colours::GREEN,
+            SyntaxHighlighterConfig::TYPE_RETURN_NEW    => Colours::BLACK,
+        ]),
+        new ColorsAdapter($color)
+    )
 );
 ```
 
-This will set any keywords as green and return statements as black.
+This will set any keywords as green and return & new statements as black.
 
 ## Types
 
@@ -83,9 +87,10 @@ Every keyword inside each type will be coloured by that colour.
 
  * `echo`
  
-#### TYPE_RETURN
+#### TYPE_RETURN_NEW
 
  * `return`
+ * `new`
  
 #### TYPE_VAR_DEREF
 
