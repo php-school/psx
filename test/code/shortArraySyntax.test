@@ -9,4 +9,4 @@ array(1, 2, 3);
 !!both {"shortArraySyntax": true}
 [];
 [1, 2, 3];
-['a' => 'b', 'c' => 'd'];
+[[32m'a'[0m => [32m'b'[0m, [32m'c'[0m => [32m'd'[0m];

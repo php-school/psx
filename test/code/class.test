@@ -20,13 +20,13 @@ class Foo
 -----
 class Foo
 {
-    var $a = 'foo';
-    private $b = 'bar';
-    static $c = 'baz';
+    var $a = [32m'foo'[0m;
+    private $b = [32m'bar'[0m;
+    static $c = [32m'baz'[0m;
     function test()
     {
-        $this->a = 'bar';
-        echo 'test';
+        [33m$this[0m->a = [32m'bar'[0m;
+        [33mecho[0m [32m'test'[0m;
     }
     protected function baz()
     {

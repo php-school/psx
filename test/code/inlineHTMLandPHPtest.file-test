@@ -6,16 +6,16 @@ echo 'PHP';
 -----
 HTML
 <?php
-echo 'PHP';
+[33mecho[0m [32m'PHP'[0m;
 -----
 <?php
 echo 'PHP';
 ?>
 HTML
 -----
-<?php
+[36m<?php[0m
 
-echo 'PHP';
+[33mecho[0m [32m'PHP'[0m;
 ?>
 HTML
 -----
@@ -27,7 +27,7 @@ HTML
 -----
 HTML
 <?php
-echo 'PHP';
+[33mecho[0m [32m'PHP'[0m;
 ?>
 HTML
 -----
@@ -43,10 +43,10 @@ HTML
 -----
 HTML
 <?php
-echo 'PHP';
+[33mecho[0m [32m'PHP'[0m;
 ?>
 HTML
 <?php
-echo 'PHP';
+[33mecho[0m [32m'PHP'[0m;
 ?>
 HTML

@@ -15,10 +15,10 @@ try {
 
 }
 -----
-try {
-} catch (Exception $e) {
-}
-try {
-} catch (Exception $e) {
-} finally {
-}
+[34mtry[0m [33m{[0m
+[33m}[0m [34mcatch[0m (Exception $e) [33m{[0m
+[33m}[0m
+[34mtry[0m [33m{[0m
+[33m}[0m [34mcatch[0m (Exception $e) [33m{[0m
+[33m}[0m [34mfinally[0m [33m{[0m
+[33m}[0m

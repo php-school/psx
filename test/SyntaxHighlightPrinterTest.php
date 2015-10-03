@@ -2,12 +2,14 @@
 
 namespace PhpSchool\PSXTest;
 
+use Colors\Color;
 use PhpParser\Error;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt;
 use PhpParser\Lexer;
 use PhpParser\Parser;
+use PhpSchool\PSX\ColorsAdapter;
 use PhpSchool\PSX\ColourAdapterInterface;
 use PhpSchool\PSX\SyntaxHighlightPrinter;
 use PhpSchool\PSX\SyntaxHighlighterConfig;
@@ -59,7 +61,8 @@ class SyntaxHighlightPrinterTest extends \PHPUnit_Framework_TestCase
         $expr = new Expr\Closure(array(
             'stmts' => array(new Stmt\Return_(new String_("a\nb")))
         ));
-        $this->assertEquals("function () {\n    return 'a\nb';\n}", $prettyPrinter->prettyPrintExpr($expr));
+        $res = $prettyPrinter->prettyPrintExpr($expr);
+        $this->assertEquals("[34mfunction[0m () [33m{[0m\n    [95mreturn[0m [32m'a\nb'[0m;\n[33m}[0m", $res);
     }
 
     protected function doTestPrettyPrintMethod($method, $name, $code, $expected, $modeLine)
@@ -174,14 +177,9 @@ class SyntaxHighlightPrinterTest extends \PHPUnit_Framework_TestCase
 
     private function getPrinter(array $options = [])
     {
-        $colourAdapter = $this->getMock(ColourAdapterInterface::class);
-        $colourAdapter
-            ->expects($this->any())
-            ->method('colour')
-            ->will($this->returnCallback(function ($string) {
-                return $string;
-            }));
-
+        $color = new Color;
+        $color->setForceStyle(true);
+        $colourAdapter = new ColorsAdapter($color);
         return new SyntaxHighlightPrinter(new SyntaxHighlighterConfig, $colourAdapter, $options);
     }
 }

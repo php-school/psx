@@ -4,4 +4,4 @@ throw
 
 throw $e;
 -----
-throw $e;
+[34mthrow[0m $e;

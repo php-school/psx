@@ -18,11 +18,11 @@ foreach ($arr as $key => &$val) {
 
 }
 -----
-foreach ($arr as $val) {
-}
-foreach ($arr as &$val) {
-}
-foreach ($arr as $key => $val) {
-}
-foreach ($arr as $key => &$val) {
-}
+[34mforeach[0m ($arr as $val) [33m{[0m
+[33m}[0m
+[34mforeach[0m ($arr as &$val) [33m{[0m
+[33m}[0m
+[34mforeach[0m ($arr as $key => $val) [33m{[0m
+[33m}[0m
+[34mforeach[0m ($arr as $key => &$val) [33m{[0m
+[33m}[0m

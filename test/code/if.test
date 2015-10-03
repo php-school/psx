@@ -10,7 +10,7 @@ if ($expr) {
 
 }
 -----
-if ($expr) {
-} elseif ($expr2) {
-} else {
-}
+[34mif[0m ($expr) [33m{[0m
+[33m}[0m [34melseif[0m ($expr2) [33m{[0m
+[33m}[0m [34melse[0m [33m{[0m
+[33m}[0m
