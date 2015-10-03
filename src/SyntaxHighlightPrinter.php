@@ -47,6 +47,23 @@ class SyntaxHighlightPrinter extends Standard
     }
 
     /**
+     * Pretty prints a file of statements (includes the opening <?php tag if it is required).
+     *
+     * @param Node[] $stmts Array of statements
+     *
+     * @return string Pretty printed statements
+     */
+    public function prettyPrintFile(array $stmts) {
+        $p = rtrim($this->prettyPrint($stmts));
+        $p = preg_replace('/^\?>\n?/', '', $p, -1, $count);
+        $p = preg_replace('/<\?php$/', '', $p);
+        if (!$count) {
+            $p = sprintf("%s\n\n%s", $this->color('<?php', SyntaxHighlighterConfig::TYPE_OPEN_TAG), $p);
+        }
+        return $p;
+    }
+
+    /**
      * @param Stmt\Echo_ $node
      *
      * @return string

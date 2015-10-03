@@ -18,6 +18,7 @@ class SyntaxHighlighterConfig
     const TYPE_CALL_PARENTHESIS = 'call_parenthesis';
     const TYPE_LHS              = 'lhs';
     const TYPE_CLASS            = 'class';
+    const TYPE_OPEN_TAG         = 'open_tag';
 
     /**
      * @var array
@@ -32,6 +33,7 @@ class SyntaxHighlighterConfig
         self::TYPE_CALL_PARENTHESIS,
         self::TYPE_LHS,
         self::TYPE_CLASS,
+        self::TYPE_OPEN_TAG,
     ];
 
     /**
@@ -47,6 +49,7 @@ class SyntaxHighlighterConfig
         self::TYPE_CALL_PARENTHESIS => Colours::LIGHT_GRAY,
         self::TYPE_LHS              => Colours::YELLOW,
         self::TYPE_CLASS            => Colours::LIGHT_GRAY,
+        self::TYPE_OPEN_TAG         => Colours::CYAN,
     ];
 
     /**

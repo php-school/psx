@@ -101,3 +101,11 @@ Every keyword inside each type will be coloured by that colour.
  * `(`
  * `)`
  
+#### TYPE_CLASS
+  
+ * `SyntaxHighlighterConfig`
+ 
+#### TYPE_OPEN_TAG
+ 
+  * `<?php`
+ 

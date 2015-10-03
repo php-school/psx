@@ -17,6 +17,7 @@ class SyntaxHighlighter
      * @var \PhpParser\Parser
      */
     private $parser;
+
     /**
      * @var SyntaxHighlightPrinter
      */
@@ -47,6 +48,6 @@ class SyntaxHighlighter
             throw new \InvalidArgumentException('PHP could not be parsed');
         }
 
-        return $this->printer->prettyPrint($statements);
+        return $this->printer->prettyPrintFile($statements);
     }
 }

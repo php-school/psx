@@ -42,7 +42,7 @@ class SyntaxHighlighterTest extends PHPUnit_Framework_TestCase
     {
         $code = '<?php echo "hello world!";';
         $highlighter = $this->getHighlighter();
-        $expected = "[33mecho[0m [32m'hello world!'[0m;";
+        $expected = "[36m<?php[0m\n\n[33mecho[0m [32m'hello world!'[0m;";
         $this->assertEquals($expected, $highlighter->highlight($code));
     }
 
