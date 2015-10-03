@@ -117,17 +117,17 @@ INF;
 378282246310005.0;
 10000000000000002.0;
 // strings (normalized to single quoted)
-'a';
-'a
-b';
-'a';
-'a
-b';
-'a\'b';
-'a\'b';
-'a\\b';
-'a\\nb$a
-{$b}';
+[32m'a'[0m;
+[32m'a
+b'[0m;
+[32m'a'[0m;
+[32m'a
+b'[0m;
+[32m'a\'b'[0m;
+[32m'a\'b'[0m;
+[32m'a\\b'[0m;
+[32m'a\\nb$a
+{$b}'[0m;
 // strings (normalized to double quoted)
 "{$a}";
 "a{$b}";
@@ -135,21 +135,21 @@ b';
 "{$a} {$b}";
 "a{$b}c";
 "a{$b}c";
-"a{$a['b']}c";
+"a{[33m$a[0m[[32m'b'[0m]}c";
 "\\{{$A}}";
 "\\{ {$A} }";
 "\\{$A}";
 "\\{ {$A} }";
 "{${$A}}[B]";
-"\${$A['B']}";
+"\${[33m$A[0m[[32m'B'[0m]}";
 "a\nb{$a}\n{$b}";
 // make sure indentation doesn't mess anything up
 function foo()
 {
-    'a
-b';
-    'a
-b';
-    'a
-    b';
+    [32m'a
+b'[0m;
+    [32m'a
+b'[0m;
+    [32m'a
+    b'[0m;
 }

@@ -5,7 +5,7 @@ File containing only PHP
 echo 'Foo Bar';
 echo 'Bar Foo';
 -----
-<?php
+[36m<?php[0m
 
-echo 'Foo Bar';
-echo 'Bar Foo';
+[33mecho[0m [32m'Foo Bar'[0m;
+[33mecho[0m [32m'Bar Foo'[0m;

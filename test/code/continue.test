@@ -5,5 +5,5 @@ continue
 continue;
 continue 2;
 -----
-continue;
-continue 2;
+[34mcontinue[0m;
+[34mcontinue[0m 2;

@@ -7,7 +7,7 @@ FOO::BAR[0];
 'FOO'[0];
 array(FOO)[0];
 -----
-FOO[0];
-FOO::BAR[0];
-'FOO'[0];
-array(FOO)[0];
+[33mFOO[0m[0];
+[33mFOO::BAR[0m[0];
+[33m[32m'FOO'[0m[0m[0];
+[33marray(FOO)[0m[0];

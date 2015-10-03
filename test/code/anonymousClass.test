@@ -22,6 +22,6 @@ new class($a) extends A
     private $a;
     public function __construct($a)
     {
-        $this->a = $a;
+        [33m$this[0m->a = $a;
     }
 };

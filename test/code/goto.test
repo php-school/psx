@@ -4,4 +4,4 @@ goto
 
 goto marker;
 -----
-goto marker;
+[34mgoto[0m marker;

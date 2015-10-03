@@ -10,9 +10,9 @@ $closureWithArgsAndVars = function ($arg1, $arg2) use($var1, $var2) {
     $comment = 'closure body';
 };
 -----
-$closureWithArgs = function ($arg1, $arg2) {
-    $comment = 'closure body';
-};
-$closureWithArgsAndVars = function ($arg1, $arg2) use($var1, $var2) {
-    $comment = 'closure body';
-};
+$closureWithArgs = [34mfunction[0m ($arg1, $arg2) [33m{[0m
+    $comment = [32m'closure body'[0m;
+[33m}[0m;
+$closureWithArgsAndVars = [34mfunction[0m ($arg1, $arg2) use($var1, $var2) [33m{[0m
+    $comment = [32m'closure body'[0m;
+[33m}[0m;
