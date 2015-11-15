@@ -20,6 +20,10 @@ class Lexer extends Emulative
             $startAttributes['traditionalArray'] = true;
         }
 
+        if ($tokenId == Tokens::T_EXIT) {
+            $endAttributes['isDie'] = strtolower($value) === 'die';
+        }
+        
         return $tokenId;
     }
 }

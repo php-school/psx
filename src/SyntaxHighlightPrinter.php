@@ -506,6 +506,20 @@ class SyntaxHighlightPrinter extends Standard
     }
 
     /**
+     * @param Expr\Exit_ $node
+     * @return string
+     */
+    public function pExpr_Exit(Expr\Exit_ $node)
+    {
+        $construct = 'exit';
+        if ($node->getAttribute('isDie', false)) {
+            $construct = 'die';
+        }
+        
+        return $construct . (null !== $node->expr ? '(' . $this->p($node->expr) . ')' : '');
+    }
+
+    /**
      * @param string $string
      * @param string $type
      *
