@@ -493,6 +493,19 @@ class SyntaxHighlightPrinter extends Standard
     }
 
     /**
+     * @param Expr\Array_ $node
+     * @return string
+     */
+    public function pExpr_Array(Expr\Array_ $node)
+    {
+        if ($this->options['shortArraySyntax'] || !$node->hasAttribute('traditionalArray')) {
+            return '[' . $this->pCommaSeparated($node->items) . ']';
+        } else {
+            return 'array(' . $this->pCommaSeparated($node->items) . ')';
+        }
+    }
+
+    /**
      * @param string $string
      * @param string $type
      *

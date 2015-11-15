@@ -21,7 +21,7 @@ class Factory
         $color = new Color;
         $color->setForceStyle(true);
         return new SyntaxHighlighter(
-            $parserFactory->create(ParserFactory::PREFER_PHP7),
+            $parserFactory->create(ParserFactory::PREFER_PHP7, new Lexer()),
             new SyntaxHighlightPrinter(
                 new SyntaxHighlighterConfig,
                 new ColorsAdapter($color)
