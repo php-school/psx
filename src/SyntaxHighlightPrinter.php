@@ -508,7 +508,7 @@ class SyntaxHighlightPrinter extends Standard
 
     /**
      * @param Expr\Array_ $parent
-     * @param array $nodes
+     * @param Expr\ArrayItem[] $nodes
      * @return string
      */
     public function pArrayList(Expr\Array_ $parent, array $nodes)
