@@ -5,6 +5,7 @@ namespace PhpSchool\PSXTest;
 use Colors\Color;
 use PhpParser\ParserFactory;
 use PhpSchool\PSX\ColorsAdapter;
+use PhpSchool\PSX\Lexer;
 use PhpSchool\PSX\SyntaxHighlighter;
 use PhpSchool\PSX\SyntaxHighlighterConfig;
 use PhpSchool\PSX\SyntaxHighlightPrinter;
@@ -51,11 +52,17 @@ class SyntaxHighlighterTest extends PHPUnit_Framework_TestCase
      */
     private function getHighlighter()
     {
+        $lexer = new Lexer([
+            'usedAttributes' => [
+                'comments', 'startLine', 'endLine', 'startFilePos', 'endFilePos', 'startTokenPos', 'endTokenPos'
+            ]
+        ]);
+        
         $parserFactory = new ParserFactory;
         $color = new Color;
         $color->setForceStyle(true);
         return new SyntaxHighlighter(
-            $parserFactory->create(ParserFactory::PREFER_PHP7),
+            $parserFactory->create(ParserFactory::PREFER_PHP7, $lexer),
             new SyntaxHighlightPrinter(
                 new SyntaxHighlighterConfig,
                 new ColorsAdapter($color)

@@ -21,7 +21,7 @@ class Lexer extends Emulative
         }
 
         if ($tokenId == Tokens::T_EXIT) {
-            $endAttributes['isDie'] = strtolower($value) === 'die';
+            $startAttributes['isDie'] = strtolower($value) === 'die';
         }
         
         return $tokenId;
