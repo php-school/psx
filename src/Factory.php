@@ -2,7 +2,6 @@
 
 namespace PhpSchool\PSX;
 
-use PhpParser\Lexer;
 use PhpParser\ParserFactory;
 use Colors\Color;
 
