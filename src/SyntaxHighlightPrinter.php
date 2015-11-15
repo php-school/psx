@@ -53,7 +53,8 @@ class SyntaxHighlightPrinter extends Standard
      *
      * @return string Pretty printed statements
      */
-    public function prettyPrintFile(array $stmts) {
+    public function prettyPrintFile(array $stmts)
+    {
         $p = rtrim($this->prettyPrint($stmts));
         $p = preg_replace('/^\?>\n?/', '', $p, -1, $count);
         $p = preg_replace('/<\?php$/', '', $p);
@@ -490,6 +491,57 @@ class SyntaxHighlightPrinter extends Standard
             $this->pCommaSeparated($node->args),
             $this->color(')', SyntaxHighlighterConfig::TYPE_CALL_PARENTHESIS)
         );
+    }
+
+    /**
+     * @param Expr\Array_ $node
+     * @return string
+     */
+    public function pExpr_Array(Expr\Array_ $node)
+    {
+        if ($this->options['shortArraySyntax'] || !$node->hasAttribute('traditionalArray')) {
+            return '[' . $this->pArrayList($node, $node->items) . ']';
+        } else {
+            return 'array(' . $this->pArrayList($node, $node->items) . ')';
+        }
+    }
+
+    /**
+     * @param Expr\Array_ $parent
+     * @param array $nodes
+     * @return string
+     */
+    public function pArrayList(Expr\Array_ $parent, array $nodes)
+    {
+        $lineNumbers = [$parent->getAttribute('startLine', null)];
+        foreach ($nodes as $node) {
+            $lineNumbers[] = $node->getAttribute('startLine', null);
+        }
+        
+        //all the same line
+        if (count(array_unique($lineNumbers)) == 1) {
+            return $this->pCommaSeparated($nodes);
+        }
+        
+        $output = "\n";
+        foreach ($nodes as $key => $node) {
+            $output .= sprintf("    %s,\n", $this->p($node));
+        }
+        return $output;
+    }
+
+    /**
+     * @param Expr\Exit_ $node
+     * @return string
+     */
+    public function pExpr_Exit(Expr\Exit_ $node)
+    {
+        $construct = 'exit';
+        if ($node->getAttribute('isDie', false)) {
+            $construct = 'die';
+        }
+        
+        return $construct . (null !== $node->expr ? '(' . $this->p($node->expr) . ')' : '');
     }
 
     /**

@@ -7,10 +7,10 @@ use PhpParser\Error;
 use PhpParser\Node\Expr;
 use PhpParser\Node\Scalar\String_;
 use PhpParser\Node\Stmt;
-use PhpParser\Lexer;
 use PhpParser\Parser;
 use PhpSchool\PSX\ColorsAdapter;
 use PhpSchool\PSX\ColourAdapterInterface;
+use PhpSchool\PSX\Lexer;
 use PhpSchool\PSX\SyntaxHighlightPrinter;
 use PhpSchool\PSX\SyntaxHighlighterConfig;
 
@@ -67,7 +67,12 @@ class SyntaxHighlightPrinterTest extends \PHPUnit_Framework_TestCase
 
     protected function doTestPrettyPrintMethod($method, $name, $code, $expected, $modeLine)
     {
-        $lexer = new Lexer\Emulative;
+        $lexer = new Lexer([
+            'usedAttributes' => [
+                'comments', 'startLine', 'endLine', 'startFilePos', 'endFilePos', 'startTokenPos', 'endTokenPos'
+            ]
+        ]);
+        
         $parser5 = new Parser\Php5($lexer);
         $parser7 = new Parser\Php7($lexer);
 

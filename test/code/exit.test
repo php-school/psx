@@ -1,0 +1,10 @@
+Exit 
+-----
+<?php
+
+die();
+exit();
+-----
+die;
+exit;
+
