@@ -81,7 +81,11 @@ class SyntaxHighlightPrinter extends Standard
      */
     public function pScalar_String(Scalar\String_ $node)
     {
-        $string = '\'' . $this->pNoIndent(addcslashes($node->value, '\'\\')) . '\'';
+        if ($node->hasAttribute('originalValue')) {
+            $string = $node->getAttribute('originalValue');
+        } else {
+            $string = '\'' . $this->pNoIndent(addcslashes($node->value, '\'\\')) . '\'';
+        }
         return $this->color($string, SyntaxHighlighterConfig::TYPE_STRING);
     }
 
