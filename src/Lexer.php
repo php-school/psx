@@ -23,6 +23,10 @@ class Lexer extends Emulative
         if ($tokenId == Tokens::T_EXIT) {
             $startAttributes['isDie'] = strtolower($value) === 'die';
         }
+
+        if ($tokenId == Tokens::T_CONSTANT_ENCAPSED_STRING) {
+            $endAttributes['originalValue'] = $value;
+        }
         
         return $tokenId;
     }

@@ -140,7 +140,7 @@ class LexerTest extends PHPUnit_Framework_TestCase
                 array(
                     array(
                         Tokens::T_CONSTANT_ENCAPSED_STRING, '"foo' . "\n" . 'bar"',
-                        array('startLine' => 1), array('endLine' => 2)
+                        array('startLine' => 1), array('endLine' => 2, 'originalValue' => "\"foo\nbar\"")
                     ),
                 )
             ),
@@ -151,7 +151,7 @@ class LexerTest extends PHPUnit_Framework_TestCase
                 array(
                     array(
                         Tokens::T_CONSTANT_ENCAPSED_STRING, '"a"',
-                        array('startFilePos' => 6), array('endFilePos' => 8)
+                        array('startFilePos' => 6), array('endFilePos' => 8, 'originalValue' => '"a"')
                     ),
                     array(
                         ord(';'), ';',
@@ -159,7 +159,7 @@ class LexerTest extends PHPUnit_Framework_TestCase
                     ),
                     array(
                         Tokens::T_CONSTANT_ENCAPSED_STRING, '"b"',
-                        array('startFilePos' => 18), array('endFilePos' => 20)
+                        array('startFilePos' => 18), array('endFilePos' => 20, 'originalValue' => '"b"')
                     ),
                     array(
                         ord(';'), ';',
@@ -174,7 +174,7 @@ class LexerTest extends PHPUnit_Framework_TestCase
                 array(
                     array(
                         Tokens::T_CONSTANT_ENCAPSED_STRING, '"a"',
-                        array('startTokenPos' => 1), array('endTokenPos' => 1)
+                        array('startTokenPos' => 1), array('endTokenPos' => 1, 'originalValue' => '"a"')
                     ),
                     array(
                         ord(';'), ';',
@@ -182,7 +182,7 @@ class LexerTest extends PHPUnit_Framework_TestCase
                     ),
                     array(
                         Tokens::T_CONSTANT_ENCAPSED_STRING, '"b"',
-                        array('startTokenPos' => 5), array('endTokenPos' => 5)
+                        array('startTokenPos' => 5), array('endTokenPos' => 5, 'originalValue' => '"b"')
                     ),
                     array(
                         ord(';'), ';',

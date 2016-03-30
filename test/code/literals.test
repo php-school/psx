@@ -120,12 +120,11 @@ INF;
 [32m'a'[0m;
 [32m'a
 b'[0m;
-[32m'a'[0m;
-[32m'a
-b'[0m;
+[32m"a"[0m;
+[32m"a\nb"[0m;
 [32m'a\'b'[0m;
-[32m'a\'b'[0m;
-[32m'a\\b'[0m;
+[32m"a'b"[0m;
+[32m"a\b"[0m;
 [32m'a\\nb$a
 {$b}'[0m;
 // strings (normalized to double quoted)
@@ -146,10 +145,9 @@ b'[0m;
 // make sure indentation doesn't mess anything up
 function foo()
 {
-    [32m'a
-b'[0m;
-    [32m'a
-b'[0m;
+    [32m"a\nb"[0m;
     [32m'a
     b'[0m;
+    [32m'a
+        b'[0m;
 }
